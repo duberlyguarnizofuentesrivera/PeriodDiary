@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Period Diary</title>
+    <link rel="stylesheet" href="{{ 'static/css/bootstrap.min.css' }}">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic&amp;display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    {#    <script type="text/javascript">#}
+    {#    $(document).on('submit','#start-form',function(e)#}
+    {#                   {#}
+    {#      e.preventDefault();#}
+    {#      $.ajax({#}
+    {#        type:'POST',#}
+    {#        url:'/start_period',#}
+    {#        data:{#}
+    {#          todo:$("#start-input").val()#}
+    {#        },#}
+    {#        success:function()#}
+    {#        {#}
+    {#          alert('saved');#}
+    {#        }#}
+    {#      })#}
+    {#    });#}
+    {#  </script>#}
+</head>
+
+<body id="page-top"><a class="menu-toggle rounded" href="#"><i class="fa fa-bars"></i></a>
+<nav class="navbar navbar-light navbar-expand" id="sidebar-wrapper">
+    <div class="container">
+        <button data-bs-toggle="collapse" class="navbar-toggler d-none" data-bs-target="#"></button>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav sidebar-nav" id="sidebar-nav">
+                <li class="nav-item sidebar-brand"><a class="nav-link active js-scroll-trigger" href="#page-top">Period
+                    Diary</a></li>
+                <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="/logout">Cerrar
+                    Sesión</a></li>
+                <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#about">Acerca De</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section class="content-section bg-primary text-white">
+    <div class="container text-center">
+        <h2 class="mb-4">¡Hola, {{ user }}!</h2>
+        <a class="btn btn-light btn-xl me-4" role="button" data-bs-toggle="modal" data-bs-target="#modalStart" href="#">Marcar
+            Inicio</a>
+        <a class="btn btn-dark btn-xl me-4" role="button" data-bs-toggle="modal" data-bs-target="#modalEnd" href="#">Marcar
+            Final</a>
+        {% if start_registered %}
+            <h3>Has marcado la fecha de INICIO correctamente.</h3>
+        {% endif %}
+        {% if end_registered %}
+            <h3>Has marcado la fecha de FINAL correctamente.</h3>
+        {% endif %}
+    </div>
+</section>
+<section id="services" class="content-section bg-secondary text-white text-center">
+    <div class="container">
+        <div class="content-section-heading">
+            <h3 class="text-secondary mb-0">Utiliza los botones</h3>
+            <h2 class="mb-5">Estadísticas De Tu Periodo</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0"><span class="mx-auto service-icon rounded-circle mb-3">4</span>
+                <h4><strong>Duración</strong></h4>
+                <p class="mb-0 text-faded">Muestra la duración media de tu periodo</p>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0"><span class="mx-auto service-icon rounded-circle mb-3">27</span>
+                <h4><strong>Frecuencia</strong></h4>
+                <p class="mb-0 text-faded">El tiempo promedio entre un periodo y otro</p>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0"><span class="mx-auto service-icon rounded-circle mb-3">12</span>
+                <h4><strong>Dias Restantes</strong></h4>
+                <p class="mb-0 text-faded">Cuanto falta para tu siguiente periodo</p>
+            </div>
+            {#                <div class="col-md-6 col-lg-3 mb-5 mb-lg-0"><span class="mx-auto service-icon rounded-circle mb-3"><i class="icon-mustache"></i></span>#}
+            {#                    <h4><strong>Question</strong></h4>#}
+            {#                    <p class="mb-0 text-faded">I mustache you a question...</p>#}
+        </div>
+    </div>
+    </div>
+</section>
+<section id="portfolio" class="content-section">
+    <div class="container">
+        <div class="content-section-heading text-center">
+            <h3 class="text-secondary mb-0">Portfolio</h3>
+            <h2 class="mb-5">Recent Projects</h2>
+        </div>
+        <div class="row g-0">
+            <div class="col-lg-6"><a class="portfolio-item" href="#">
+                <div class="caption">
+                    <div class="caption-content">
+                        <h2>Stationary</h2>
+                        <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
+                    </div>
+                </div>
+                <img class="img-fluid" src="assets/img/portfolio-1.jpg">
+            </a></div>
+            <div class="col-lg-6"><a class="portfolio-item" href="#">
+                <div class="caption">
+                    <div class="caption-content">
+                        <h2>Ice Cream</h2>
+                        <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream
+                            cone!</p>
+                    </div>
+                </div>
+                <img class="img-fluid" src="assets/img/portfolio-2.jpg">
+            </a></div>
+            <div class="col-lg-6"><a class="portfolio-item" href="#">
+                <div class="caption">
+                    <div class="caption-content">
+                        <h2>Strawberries</h2>
+                        <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
+                    </div>
+                </div>
+                <img class="img-fluid" src="assets/img/portfolio-3.jpg">
+            </a></div>
+            <div class="col-lg-6"><a class="portfolio-item" href="#">
+                <div class="caption">
+                    <div class="caption-content">
+                        <h2>Workspace</h2>
+                        <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
+                    </div>
+                </div>
+                <img class="img-fluid" src="assets/img/portfolio-4.jpg">
+            </a></div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer text-center">
+    <div class="container">
+        <ul class="list-inline mb-5">
+            <li class="list-inline-item">&nbsp;<a class="link-light social-link rounded-circle" href="#"><i
+                    class="icon-social-github"></i></a></li>
+        </ul>
+        <p class="text-muted mb-0 small">Copyright &nbsp;© Duberly Guarnizo 2022</p>
+    </div>
+    <a class="js-scroll-trigger scroll-to-top rounded" href="#page-top"><i class="fa fa-angle-up"></i></a>
+</footer>
+<div class="modal fade" id="modalStart">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2>Inicio del periodo</h2>
+                <p>Se marcará el día de hoy como inicio de tu periodo. De no ser así, puedes escoger una fecha de inicio
+                    en el selector de abajo</p>
+                <form action="/start_period" method="post" id="start-form">
+                    <button type="submit" class="btn btn-primary">Iniciar periodo</button>
+                    <label for="start-input">Fecha de inicio (si no fue hoy):</label>
+                    <input type="date" id="start-input" name="period_start"
+                           min="2022-01-01" max="2022-12-31">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalEnd">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2>Final del periodo</h2>
+                <p>Se marcará el día de hoy como final de tu periodo. De no ser así, puedes escoger una fecha de
+                    finalización
+                    en el selector de abajo</p>
+                <form action="/end_period" method="post" id="end-form">
+                    <button type="submit" class="btn btn-primary">Finalizar Periodo</button>
+                    <label for="end-input">Fecha de finalización (si no fue hoy):</label>
+                    <input type="date" id="end-input" name="period_end"
+                           min="2022-01-01" max="2022-12-31">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ 'static/js/period_diary.js' }}"></script>
+</body>
+
+</html>
